@@ -2,7 +2,7 @@ package lab1;
 
 import java.util.Scanner;
 
-public class BMI2 {
+public class BMICalc {
 
     public static final double INCH_CONST = 0.3937;
     public static final double POUND_CONST= 2.2046;
