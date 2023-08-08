@@ -1,0 +1,41 @@
+!! ООП принципи:
+https://www.geeksforgeeks.org/abstraction-in-java-2/
+https://www.geeksforgeeks.org/inheritance-in-java/
+https://www.geeksforgeeks.org/encapsulation-in-java/
+https://www.geeksforgeeks.org/polymorphism-in-java/
+
+
+SOLID принципи:
+https://www.geeksforgeeks.org/solid-principle-in-programming-understand-with-real-life-examples/
+
+
+!!! Структури от данни:
+https://www.geeksforgeeks.org/list-interface-java-examples/
+https://www.geeksforgeeks.org/queue-interface-java/
+https://www.geeksforgeeks.org/stack-class-in-java/
+https://www.geeksforgeeks.org/arraydeque-in-java/
+
+https://www.geeksforgeeks.org/collections-synchronizedlist-method-in-java-with-examples/
+https://www.geeksforgeeks.org/collections-synchronizedmap-method-in-java-with-examples/
+https://www.geeksforgeeks.org/concurrentlinkeddeque-in-java-with-examples/
+
+https://www.geeksforgeeks.org/enum-in-java/
+
+
+! Сереализация:
+https://www.geeksforgeeks.org/serialization-in-java/
+
+
+!! CRUD:
+https://www.geeksforgeeks.org/crud-operations-in-student-management-system-in-java/
+https://www.geeksforgeeks.org/file-handling-in-java-with-crud-operations/
+
+
+Потоци от данни:
+https://www.geeksforgeeks.org/stream-in-java/
+https://www.geeksforgeeks.org/lambda-expressions-java-8/
+
+
+RegEx:
+https://www.geeksforgeeks.org/regular-expressions-in-java/
+https://regexone.com
