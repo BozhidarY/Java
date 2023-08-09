@@ -19,6 +19,7 @@ public class Main {
             System.out.println("TV Power Consumption: " + (int) tv.getPower());
         } catch (PriceException | PowerException e) {
             System.out.println("Exception: " + e.getMessage());
+            
         }
     }
 }
