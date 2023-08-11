@@ -28,14 +28,17 @@ public class Main {
         try {
             Object[] products = productLoader.importDataFromFile();
             for (Object product : products) {
-                if (product instanceof Electronics) {
+                if (product instanceof Electronics){
                     System.out.println(product.toString());
                 } else if (product instanceof Book) {
+                    ((Book) product).sellProductPrice(15);
                     System.out.println("Book: " + product.toString());
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (NoMoreProductsException e) {
+            throw new RuntimeException(e);
         }
     }
 }

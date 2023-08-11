@@ -2,6 +2,8 @@ package lab6;
 
 import lab6.Constructor.Electronics;
 import lab6.Constructor.Provider;
+import lab6.Constructor.Book;
+
 import lab6.Exceptions.NoMoreProductsException;
 import lab6.Exceptions.WrongPhoneNumberException;
 import lab6.Interfaces.ImportData;
@@ -29,6 +31,11 @@ public class ProductLoader implements ImportData {
                     Provider provider = new Provider(part[1], part[2]);
                     Electronics electronics = new Electronics(Integer.parseInt(part[3]), Double.parseDouble(part[4]), Integer.parseInt(part[5]), part[6], part[7],part[8]);
                     objects[index++] = electronics;
+                }
+                else if(part[0].equals("2")){
+                    Provider provider = new Provider(part[1], part[2]);
+                    Book books = new Book(Integer.parseInt(part[3]), Double.parseDouble(part[4]), Integer.parseInt(part[5]), part[6], part[7],part[8]);
+                    objects[index++] = books;
                 }
             }
         } catch (WrongPhoneNumberException e) {

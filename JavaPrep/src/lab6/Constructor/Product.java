@@ -50,4 +50,14 @@ public abstract class Product {
     public void setProvider(String provider) {
         this.provider = provider;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "inventoryNumber=" + inventoryNumber +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", provider='" + provider + '\'' +
+                '}';
+    }
 }

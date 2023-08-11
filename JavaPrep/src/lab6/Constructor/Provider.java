@@ -11,7 +11,7 @@ public class Provider implements ValidatePhone {
     private static String name;
     private static String phoneNumber;
 
-    public static final Pattern pattern = Pattern.compile("^[0-9]{5}$");
+    public static final Pattern pattern = Pattern.compile("^[0-9]{10}$");
 
     public Provider(String name, String phoneNumber) throws WrongPhoneNumberException {
         this.name = name;

@@ -45,15 +45,9 @@ public class Electronics extends Product {
     @Override
     public String toString() {
         return "Electronics{" +
-                "Provider" + Provider.getName() + Provider.getPhoneNumber() +
-                "inventoryNumber='" + getInventoryNumber() + '\'' +
-                ", price=" + getPrice() +
-                ", quantity=" + getQuantity() +
-                ", provider=" + getProvider() + // Print provider's name
-                ", manufacturer='" + getManufacturer() + '\'' +
-                ", model='" + getModel() + '\'' +
+                super.toString() +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
                 '}';
     }
-
-
 }

@@ -29,5 +29,12 @@ public class Book extends Product {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString() +
+                " " +
+                "author='" + author + '\'' +
+                ", title='" + title + '\'' +
+                '}';
+    }
 }
