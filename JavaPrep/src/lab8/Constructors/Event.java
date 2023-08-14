@@ -1,16 +1,18 @@
-package lab8;
+package lab8.Constructors;
 
 import lab8.Exceptions.NoMoreTicketException;
 
 public abstract class Event {
 
     private String place;
+    private String date;
     private String startHour;
     private int numberOfTickets;
     private double priceOfTickets;
 
-    public Event(String place, String startHour, int numberOfTickets, double priceOfTickets) {
+    public Event(String place, String date, String startHour, int numberOfTickets, double priceOfTickets) {
         this.place = place;
+        this.date = date;
         this.startHour = startHour;
         this.numberOfTickets = numberOfTickets;
         this.priceOfTickets = priceOfTickets;
@@ -24,6 +26,14 @@ public abstract class Event {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getStartHour() {
