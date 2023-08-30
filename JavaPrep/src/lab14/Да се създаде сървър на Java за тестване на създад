@@ -1,0 +1,105 @@
+Да се създаде сървър на Java за тестване на създадени от потребителя регулярни изрази и съхраняване на вече такива във файл.
+
+Създайте клас Regex със следните полета:
+ - id - цяло число, идентификатор;
+ - pattern - символен низ;
+ - descritpion - символен низ, ключове думи;
+ - rating - цяло число, потребителска оценка за качеството на израза;
+ Regex да съдържа и статично поле nextId с първоначална стойност 0;
+
+ Създайте конструктор, който инициализира полетата pattern и description, полетата rating с 0 и id със следващата целочислена стойност на nextId
+ Сървърът трябва да може да запазва гореописаните регулярни изрази. Създайте функционалности за четене и запис на списък, съдърщах обекти от тип Regex във файл. Да не се допуска добяване на Regex, чийто pattern вече съществува във файла.
+ Създайте клас RegexTester, в който запишете статичен метод List <Boolean> test(Regex regex, String[] strings). Mетодът трябва да проверява низовете от масива strings по подадения регулярен израз regex. Ако низът отговаря на шаблона, резултатът е true(?). Методът връща списък с булеви стойности - резултатите от всички проверки.
+
+ При свързване към сървъра клиентите има 2 опции за работа - създаване на собствен регекс или търсене на такъв във файла.
+
+ При създаване на собствен регекс, клиентът попълва полетата за шаблон и описание. След това въвежда низове за тестване разделени с нов ред. Сървърът провежда тестването на регулярния израз чрез RegexTester и изпраща резултата на клиента. Клиентът избира дали иска да добави своя регулярен израз към файла.
+
+ Ако клиентът избере опция за търсене на съществуващ израз, той въвежда ключова дума. Сървърът филтрира списъка от файла и връща на клиента списък с Regex, чието описания съдържат ключовата дума(description). Списък е подреден по полето rating в низходящ ред. Клиентът избира Regex от списъка като въведе неговото id. След това въвежда низове за тестване. Тестването се провежда по аналогичен начин. Клиентът има опцията да промени rating на регулярния израз с плюс или минус едно.
+
+
+
+
+
+
+
+ import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+
+public class RegexServer {
+    private static List<Regex> regexList = new ArrayList<Regex>();
+
+    public static void main(String[] args) throws IOException {
+        // Read regex list from file
+        readRegexListFromFile();
+
+        // Start server and wait for client connections
+        // ...
+
+        while (true) {
+            // Wait for client to choose option (create or search)
+            int option = in.readInt();
+
+            if (option == 1) {
+                // Client chose to create own regex
+                Regex newRegex = new Regex(in.readUTF(), in.readUTF());
+                String[] testStrings = in.readUTF().split("\n");
+                List<Boolean> testResults = RegexTester.test(newRegex, testStrings);
+
+                // Send test results to client
+                out.writeObject(testResults);
+
+                // Ask client if they want to save the regex to file
+                if (in.readBoolean()) {
+                    // Check if regex already exists in file
+                    boolean regexExists = false;
+                    for (Regex regex : regexList) {
+                        if (regex.getPattern().equals(newRegex.getPattern())) {
+                            regexExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!regexExists) {
+                        regexList.add(newRegex);
+                        writeRegexListToFile();
+                    } else {
+                        // Send error message to client
+                        out.writeUTF("Regex already exists in file.");
+                    }
+                }
+            } else if (option == 2) {
+                // Client chose to search for existing regex
+                String keyword = in.readUTF();
+                List<Regex> searchResults = new ArrayList<Regex>();
+                for (Regex regex : regexList) {
+                    if (regex.getDescription().contains(keyword)) {
+                        searchResults.add(regex);
+                    }
+                }
+
+                // Sort search results by rating in descending order
+                searchResults.sort(Comparator.comparingInt(Regex::getRating).reversed());
+
+                // Send search results to client
+                out.writeObject(searchResults);
+
+                // Wait for client to choose regex by id
+                int chosenId = in.readInt();
+                Regex chosenRegex = null;
+                for (Regex regex : searchResults) {
+                    if (regex.getId() == chosenId) {
+                        chosenRegex = regex;
+                        break;
+                    }
+                }
+
+                // Test chosen regex
+                String[] testStrings = in.readUTF().split("\n");
+                List<Boolean> testResults = RegexTester.test(chosenRegex, testStrings);
+
+                // Send test results to client
+                out.writeObject(testResults);
+
+                // Ask client if they want to change
