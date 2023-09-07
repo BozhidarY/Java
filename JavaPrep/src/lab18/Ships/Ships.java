@@ -6,13 +6,15 @@ public abstract class Ships {
     private int defence;
     private int attack;
     private int lvl;
+    private int price;
 
-    public Ships(String name, String hp, int defence, int attack, int lvl) {
+    public Ships(String name, String hp, int defence, int attack, int lvl, int price) {
         this.name = name;
         this.hp = hp;
         this.defence = defence;
         this.attack = attack;
         this.lvl = lvl;
+        this.price = price;
     }
 
     public abstract ShipType getShipType();
@@ -54,6 +56,14 @@ public abstract class Ships {
 
     public void setLvl(int lvl) {
         this.lvl = lvl;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     @Override

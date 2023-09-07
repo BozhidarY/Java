@@ -2,12 +2,12 @@ package lab18.Ships;
 
 public class Scouts extends Ships {
 
-    public static final Scouts scoutsDefault = new Scouts("scoutDefault", "100", 50, 50, 1, 25, true);
+    public static final Scouts scoutsDefault = new Scouts("scoutDefault", "100", 50, 50, 1, 25, 25, true);
 
     private int bonusSpeed;
     private boolean special;
-    public Scouts(String name, String hp, int defence, int attack, int lvl, int bonusSpeed, boolean special) {
-        super(name, hp, defence, attack, lvl);
+    public Scouts(String name, String hp, int defence, int attack, int lvl, int price, int bonusSpeed, boolean special) {
+        super(name, hp, defence, attack, lvl, price);
         this.bonusSpeed = bonusSpeed;
         this.special = special;
     }

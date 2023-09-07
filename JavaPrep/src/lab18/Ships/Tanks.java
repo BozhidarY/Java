@@ -2,12 +2,12 @@ package lab18.Ships;
 
 public class Tanks extends Ships {
 
-    public static final Tanks tankDefault = new Tanks("tankDefault", "100", 50, 50, 1, 25);
+    public static final Tanks tankDefault = new Tanks("tankDefault", "100", 50, 50, 1, 25, 25);
 
     private int bonusArmor;
 
-    public Tanks(String name, String hp, int defence, int attack, int lvl, int bonusArmor) {
-        super(name, hp, defence, attack, lvl);
+    public Tanks(String name, String hp, int defence, int attack, int lvl, int price, int bonusArmor) {
+        super(name, hp, defence, attack, lvl, price);
         this.bonusArmor = bonusArmor;
     }
 
