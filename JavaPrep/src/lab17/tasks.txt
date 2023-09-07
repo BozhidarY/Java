@@ -1,0 +1,239 @@
+
+1)
+You are given an array of integers numbers and an integer pivot. Let countGreater denote how many integers within numbers are strictly greater than pivot, and countLess denote 
+how many integers are strictly less than pivot.
+
+Your task is to compute countGreater and countLess, then return:
+
+"greater" if countGreater is greater than countLess;
+"smaller" if countGreater is less than countLess;
+"tie" if they are equal.
+Note: You are not expected to provide the most optimal solution, but a solution with time complexity not worse than O(numbers.length2) will fit within the execution time limit.
+
+Example
+
+For numbers = [1, 3, 0, -1, 1, 4, 3] and pivot = 2, the output should be solution(numbers, pivot) = "smaller".
+
+There are countGreater = 3 integers greater than pivot = 2: numbers[1] = 3, numbers[5] = 4, and numbers[6] = 3;
+There are countLess = 4 integers smaller than pivot = 2: numbers[0] = 1, numbers[2] = 0, numbers[3] = -1, and numbers[4] = 1;
+Therefore, there are more integers that are smaller than pivot, so the answer is "smaller".
+For numbers = [3, 4, 5, 1, 0] and pivot = 3, the output should be solution(numbers, pivot) = "tie".
+
+There are countGreater = 2 integers greater than pivot = 3: numbers[1] = 4 and numbers[2] = 5;
+There are countLess = 2 integers smaller than pivot = 3: numbers[3] = 1 and numbers[4] = 0;
+Since these counts are equal, the answer is "tie".
+For numbers = [9, 8, -5] and pivot = -1, the output should be solution(numbers, pivot) = "greater".
+
+There are countGreater = 2 integers greater than pivot = -1: numbers[0] = 9 and numbers[1] = 8;
+There is countLess = 1 integers smaller than pivot = -1: numbers[2] = -5;
+Therefore, there are more integers greater than pivot, so the answer is "greater".
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[memory limit] 1 GB
+
+[input] array.integer numbers
+
+An array of integers.
+
+Guaranteed constraints:
+1 ≤ numbers.length ≤ 1000,
+-109 ≤ numbers[i] ≤ 109.
+
+[input] integer pivot
+
+An integer for comparison.
+
+Guaranteed constraints:
+-109 ≤ pivot ≤ 109.
+
+[output] string
+
+Return "greater" if there are more numbers in the array greater than pivot, "smaller" if there are more numbers smaller than pivot, or "tie" if these numbers are equal.
+
+2)
+
+A word is called interesting if it contains a substring satisfying the following criteria:
+
+this substring is the repetition of the same letter (let's call it alpha) repeated n times;
+if there is a letter immediately after the substring, it should be different from alpha;
+if there is a letter immediately before the substring, it should be different from alpha.
+For example, if n = 3,
+
+Words aaab, abbb, and cdddee are all interesting (substrings that make them interesting are shown in brackets: [aaa]b, a[bbb], c[ddd]ee);
+Word cddee is NOT interesting because it does not contain a substring consisting of the same letter repeated 3 times;
+Word aaaab is NOT interesting: the substring highlighted in a[aaa]b is preceded by the letter a, and the substring highlighted in [aaa]ab is followed by the letter a.
+Similarly, Word baaaa is also NOT interesting: the substring highlighted in ba[aaa] is preceded by the letter a, and the substring highlighted in b[aaa]a is followed by the letter a.
+Given an array of strings words and an integer n, count the number of interesting words in words.
+
+Note: You are not expected to provide the most optimal solution, but a solution with time complexity not worse than O(words.length × max(words) × n) will fit within the execution time limit.
+
+Example
+
+For words = ["all", "cook", "llama"] and n = 2, the output should be solution(words, n) = 3.
+
+Explanation:
+Let's take a look at all the words in the given string.
+
+The word "all" contains a substring "ll" consisting of the letter l repeated 2 times. The letter before this substring (a) is different from l, and there are no letters after it. Therefore, the word "all" is interesting.
+The word "cook" contains a substring "oo" consisting of the letter o repeated 2 times. The letters both before (c) and after (k) this substring are different from o. Therefore, the word "cook" is interesting.
+The word "llama" contains a substring "ll" consisting of the letter l repeated 2 times. The letter after this substring (a) is different from l, and there are no letters before it. Therefore, the word "llama" is interesting.
+Both words in words are interesting, so the answer is 3.
+
+For words = ["abc", "abaaaccct", "abaaaa", "aaaaba"] and n = 3, the output should be solution(words, n) = 1.
+
+Explanation:
+Let's take a look at all the words in the given string.
+
+The word "abc" does NOT contain any substrings that consist of the same letter repeated 3 times. Therefore, it is NOT interesting.
+The word "abaaaccct" contains two substrings satisfying the criteria ("aaa" and "ccc"), so it is interesting.
+The word "abaaaa" contains two substrings, "aaa" that consists of the letter a repeated 3 times. However, the first substring (ab[aaa]a) is followed by the letter a, and the second substring (aba[aaa]) is preceded by the letter a, thus making the word "abaaaa" NOT interesting.
+The word "aaaaba" contains two substrings, "aaa" that consists of the letter a repeated 3 times. However, the first substring ([aaa]aba) is followed by the letter a, and the second substring (a[aaa]ba) is preceded by the letter a, thus making the word "aaaaba" NOT interesting.
+Only one of the words in words is interesting, so the answer is 1.
+
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[memory limit] 1 GB
+
+[input] array.string words
+
+An array of words (strings). Each word is a sequence of lowercase English letters. It is guaranteed that the length of each word does not exceed 20 characters.
+
+Guaranteed constraints:
+1 ≤ words.length ≤ 1000.
+
+[input] integer n
+
+An integer from the first criterion for interesting words.
+
+Guaranteed constraints:
+1 ≤ n ≤ 10.
+
+[output] integer
+
+The number of interesting words in words.
+
+3)
+All the competitors in a stock car race have completed their qualifying laps. Each lap, the driver with the current slowest "best" time is eliminated (that is, the highest personal
+ best time). If multiple drivers tie for the slowest time, they are all are eliminated.
+
+You are given a two-dimensional string array with each driver's name and lap time in seconds for each lap. Your task is to return the drivers in the order in which they were eliminated, 
+ending with the last driver or drivers remaining. When multiple drivers are eliminated on the same lap, their names should be listed alphabetically.
+
+Note: You are not expected to provide the most optimal solution, but a solution with time complexity not worse than O(laps.length · laps[0].length) will fit within the execution time limit.
+
+Example
+
+For
+
+laps = [["Harold 154", "Gina 155", "Juan 160"],
+        ["Juan 152", "Gina 153", "Harold 160"],
+        ["Harold 148", "Gina 150", "Juan 151"]]
+The output should be solution(laps) = ["Juan", "Harold", "Gina"].
+
+Explanation:
+
+Expand to see lap-by-lap explanation
+After the first lap, Harold's best time is 154, Gina's best time is 155 and Juan's best time is 160. Juan is eliminated, leaving Harold and Gina.
+After the second lap, Harold's best time is still 154 and Gina's best time is 153, so Harold is eliminated.
+Gina is the only racer remaining on the third lap.
+For
+
+laps = [["Gina 155", "Eddie 160", "Joy 161", "Harold 163"],
+        ["Harold 151", "Gina 153",  "Joy 160", "Eddie 160"],
+        ["Harold 149", "Joy 150", "Gina 152", "Eddie 154"],
+        ["Harold 148", "Gina 150", "Eddie 151", "Joy 155"]]
+The output should be solution(laps) = ["Harold", "Eddie", "Joy", "Gina"].
+
+Explanation:
+
+Expand to see lap-by-lap explanation
+After the first lap, Gina's best time is 155, Eddie's best time is 160, Joy's best time is 161, and Harold's best time is 163. Harold is eliminated.
+After the second lap, Gina's best time is 153, Eddie's best time is 160, and Joy's best time is also 160. Eddie and Joy are eliminated.
+Because Eddie and Joy were eliminated on the same round, their names are listed alphabetically in the output.
+Gina is the only racer remaining on the third lap and fourth laps.
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[memory limit] 1 GB
+
+[input] array.array.string laps
+
+An array of string arrays of driver's name and lap time. It is guaranteed that the same drivers will appear in every lap. All laps[i] are guaranteed to be given in format "str(NAME) int(TIME)".
+Guaranteed constraints:
+laps.length = laps[i].length,
+1 ≤ laps[i].length ≤ 100,
+1 ≤ TIME ≤ 104.
+
+[output] array.string
+
+Return the list of drivers sorted in the order which they were eliminated, and ordered alphabetically in the case of ties.
+
+4)
+You are monitoring the building density in a district of houses. The district is represented as a number line, where each house is located at some integer along the line. Imagine that some of the houses are gradually being destroyed over time.
+
+You are given houses, an array of integers representing the initial locations of all houses in the district. You are also given queries, an array of integers representing the locations of the houses which will be destroyed, sorted by the order in which they are destroyed. After each house is destroyed, your task is to find the number of house segments remaining within the district. House segments are defined as one or more adjacent houses which do not have neighbors on either side.
+
+Return an array of integers representing the number of house segments after each house from queries is destroyed.
+
+NOTE: It's guaranteed that all houses are in distinct locations. The locations of all houses in queries are present in houses, and also distinct.
+
+Example
+
+For houses = [1, 2, 3, 6, 7, 9] and queries = [6, 3, 7, 2, 9, 1], the output should be solution(houses, queries) = [3, 3, 2, 2, 1, 0].
+
+Expand to see the example video.
+
+Note: If you are not able to see the video, use this link to access it.
+
+Initially, there are 6 houses in the district at positions 1, 2, 3, 6, 7, and 9, which form three house segments: [1, 2, 3], [6, 7], and [9]. Let's consider what happens after each step in queries:
+
+After queries[0] = 6, the house at location 6 is removed, and the remaining houses are in three segments: [1, 2, 3], [7], and [9], so the output is 3.
+After queries[1] = 3, the house at location 3 is removed, and the remaining houses are still in three segments: [1, 2], [7], and [9], so the output is also 3.
+After queries[2] = 7, the house at location 7 is removed, and the remaining houses are now in two segments: [1, 2] and [9], so the output is 2.
+After queries[3] = 2, the house at location 2 is removed, and the remaining houses are still in two segments: [1] and [9], so the output is 2.
+After queries[4] = 9, only one house in position 1 remains, which can only be in one segment, so the output is 1.
+After queries[5] = 1, there are no more houses in the district, so the output is 0.
+Altogether, the final answer is [3, 3, 2, 2, 1, 0].
+
+For houses = [2, 4, 5, 6, 7] and queries = [5, 6, 2], the output should be solution(houses, queries) = [3, 3, 2].
+
+Expand to see the example video.
+
+Note: If you are not able to see the video, use this link to access it.
+
+Initially there are two house segments: [2] and [4, 5, 6, 7]. Let's consider what happens after each step in queries:
+
+After queries[0] = 5, the house at location 5 is removed, and the remaining houses are now in three segments: [2], [4] and [6, 7], so the output is 3.
+After queries[1] = 6, the house at location 6 is removed, and the remaining houses are still in three segments: [2], [4] and [7], so the output is 3.
+After queries[2] = 2, the house at location 2 is removed, and the remaining houses are now in two segments: [4] and [7], so the output is 2.
+Altogether, the final answer is [3, 3, 2].
+
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[memory limit] 1 GB
+
+[input] array.integer houses
+
+A list of unique integers representing the coordinates of houses in the district.
+
+Guaranteed constraints:
+1 ≤ houses.length ≤ 105,
+-109 ≤ houses[i] ≤ 109.
+
+[input] array.integer queries
+
+A list representing the coordinates of the houses scheduled to be destroyed. It is guaranteed that all the coordinates are unique and are present in houses.
+
+Guaranteed constraints:
+1 ≤ queries.length ≤ houses.length.
+
+[output] array.integer
+
+Return a list of size queries.length such that the ith element contains the number of house segments (described above) after the ith query.
