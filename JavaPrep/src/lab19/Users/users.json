@@ -1,0 +1,19 @@
+{
+  "usersList": [
+    {
+      "username": "admin",
+      "password": "admin",
+      "userType": "ADMIN"
+    },
+    {
+      "username": "Register",
+      "password": "register",
+      "userType": "CLIENT"
+    },
+    {
+      "username": "bojidar",
+      "password": "bojidar",
+      "userType": "CLIENT"
+    }
+  ]
+}
