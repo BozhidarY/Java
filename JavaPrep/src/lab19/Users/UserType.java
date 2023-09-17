@@ -2,5 +2,6 @@ package lab19.Users;
 
 public enum UserType {
     ADMIN,
-    CLIENT
+    CLIENT,
+    ARTIST
 }

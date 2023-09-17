@@ -1,15 +1,21 @@
 package lab19.Users;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lab5.User;
 
-public class Users {
+//@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class Users {
     private String username;
     private String password;
     private UserType userType;
 
+    public static final String USERS_JSON_PATH = System.getProperty("user.dir")+"\\src\\lab19\\Users\\users.json";
+    public static final String DELETEDUSERS_JSON_PATH = System.getProperty("user.dir")+"\\src\\lab19\\Users\\deletedProfiles.json";
+
     public Users(String username, String password) {
         this.username = username;
         this.password = password;
+
     }
 
     public String getUsername() {

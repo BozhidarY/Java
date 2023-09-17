@@ -1,9 +1,7 @@
 package lab19.Users;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import lab19.Playlists.Library;
-import lab19.Playlists.Playlists;
+import lab19.Librarys.Library;
+import lab19.Librarys.Playlists;
 
 public class Client extends Users {
 
@@ -12,11 +10,12 @@ public class Client extends Users {
 
     public Client(String username, String password) {
         super(username, password);
-        this.library = new Library(getUsername() + "'library");
-        this.playlists = new Playlists("defaultPlaylist");
-        this.setUserType(UserType.CLIENT);
-        library.getLibraryList().add(playlists);
+        setUserType(UserType.CLIENT);
+        this.library = new Library(getUsername() + " library");
+        library.getLibraryList().add(new Playlists("defaultPlaylist"));
     }
+
+
 
     public Library getLibrary() {
         return library;
@@ -31,5 +30,13 @@ public class Client extends Users {
 
     public void setPlaylists(Playlists playlists) {
         this.playlists = playlists;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "library=" + library +
+                ", playlists=" + playlists +
+                '}';
     }
 }

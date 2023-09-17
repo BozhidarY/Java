@@ -1,31 +1,22 @@
 package lab19.Songs;
 
+import lab19.Users.Artists;
+
 public class Songs {
     private String name;
-    private String artist;
+//    private Artists artist;
+    private Artists artist;
     private String duration;
     private boolean liked;
 
-    public Songs(String name, String artist, String duration, boolean liked) {
+    public static final String SONG_JSON_PATH = System.getProperty("user.dir") + "\\src\\lab19\\Songs\\songsFile.json";
+
+    public Songs(String name,Artists artist) {
         this.name = name;
         this.artist = artist;
-        this.duration = duration;
-        this.liked = liked;
+        setDuration("0:05");
+        setLiked(false);
     }
-
-    public int durationStringToSeconds(String duration) {
-        String[] parts = duration.split(":");
-
-        if (parts.length == 2) {
-            int minutes = Integer.parseInt(parts[0]);
-            int seconds = Integer.parseInt(parts[1]);
-            return (minutes * 60) + seconds;
-        } else {
-            // Handle invalid input
-            throw new IllegalArgumentException("Invalid duration format: " + duration);
-        }
-    }
-
 
     public String getName() {
         return name;
@@ -35,14 +26,13 @@ public class Songs {
         this.name = name;
     }
 
-    public String getArtist() {
+    public Artists getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
+    public void setArtist(Artists artist) {
         this.artist = artist;
     }
-
     public String getDuration() {
         return duration;
     }

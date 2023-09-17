@@ -1,6 +1,4 @@
-package lab19.Playlists;
-
-import lab19.Users.Client;
+package lab19.Librarys;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,7 @@
 package lab19.UsersEngine;
 
-import lab19.UserCommunication;
-import lab19.Users.Client;
-import lab19.Users.UserDB;
-import lab19.Users.UserType;
-import lab19.Users.Users;
+import lab19.CommunicationEngine.UserCommunication;
+import lab19.Users.*;
 
 import java.util.Scanner;
 
@@ -24,15 +21,19 @@ public class LoginRegisterMenu {
         boolean hasLoginOccured = false;
         for(Users user: userDB.getUsersList()) {
             if (user.getUsername().equals(username) && password.equals(user.getPassword())) {
-                if(user.getUserType() == UserType.ADMIN){
+                if(user.getUserType() == UserType.ARTIST){
                     hasLoginOccured = true;
-                    userCommunication.openAdminCommunication(user);
+                    userCommunication.openArtistCommunication((Artists) user);
                 }
-                else {
+                else if(user.getUserType() == UserType.CLIENT) {
                     hasLoginOccured = true;
-                    userCommunication.openClientCommunication(user);
+                    userCommunication.openClientCommunication((Client) user, userDB);
                 }
             }
+        }
+        if(username.equals(Admin.getAdmin().getUsername()) && password.equals(Admin.getAdmin().getPassword())){
+            hasLoginOccured = true;
+            userCommunication.openAdminCommunication(Admin.getAdmin(),userDB);
         }
         if(!hasLoginOccured){
             System.out.println("No such credentials. You need to register");
@@ -53,10 +54,22 @@ public class LoginRegisterMenu {
         System.out.println("Register Form: ");
         UserInput();
         if(!dublicationCheck(userDB)){
-            Client client = new Client(username, password);
-            userDB.getUsersList().add(client);
-            System.out.println("You have registered successfully");
-            userCommunication.openClientCommunication(client);
+            System.out.println("Do you want to create Client or Artist account.\n (Client/Artist)");
+            String choice = scanner.nextLine();
+            switch(choice){
+                case "Artist" -> {
+                    Artists artists = new Artists(username, password);
+                    userDB.getUsersList().add(artists);
+                    System.out.println("You have registered successfully");
+                    userCommunication.openArtistCommunication(artists);
+                }
+                case "Client" -> {
+                    Client client = new Client(username,password);
+                    userDB.getUsersList().add(client);
+                    System.out.println("You have registered successfully");
+                    userCommunication.openClientCommunication(client, userDB);
+                }
+            }
         }
         else {
             System.out.println("Try register again or go to login form(Register/Login)");

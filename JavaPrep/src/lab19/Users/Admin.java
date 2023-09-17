@@ -8,7 +8,7 @@ public class Admin extends Users {
 
     private Admin(String username, String password){
         super(username,password);
-        this.setUserType(UserType.ADMIN);
+        setUserType(UserType.ADMIN);
     }
 
     private final static Admin admin = new Admin("admin", "admin");

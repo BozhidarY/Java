@@ -1,4 +1,4 @@
-package lab19.Playlists;
+package lab19.Librarys;
 
 import lab19.Songs.Songs;
 
@@ -6,12 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Playlists {
-    private List<Songs> songPlaylist;
+
     private String playlistName;
+    private List<Songs> songPlaylist;
+
 
     public Playlists(String playlistName){
         this.playlistName = playlistName;
         this.songPlaylist = new ArrayList<>();
+    }
+
+    public String getPlaylistName() {
+        return playlistName;
+    }
+
+    public void setPlaylistName(String playlistName) {
+        this.playlistName = playlistName;
     }
 
     public List<Songs> getSongPlaylist() {
