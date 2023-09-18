@@ -1,0 +1,30 @@
+{
+  "listUsers": [
+    {
+      "password": "Buy",
+      "username": "Hello",
+      "userType": "CLIENTS"
+    },
+    {
+      "password": "Buy",
+      "username": "Helloooooooo",
+      "userType": "CLIENTS"
+    },
+    {
+      "egn": "Buy",
+      "username": "Hello",
+      "userType": "AUTHORS"
+    },
+    {
+      "username": "User"
+    },
+    {
+      "username": "Ivan"
+    },
+    {
+      "egn": "Buyyyyy",
+      "username": "Hello",
+      "userType": "AUTHORS"
+    }
+  ]
+}
